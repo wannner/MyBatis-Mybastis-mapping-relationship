@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--1. 引入数据源配置文件  -->
+    <properties resource="db.properties" />
+    <!--2. 定义数据库环境，且默认使用development环境 -->
+    <environments default="development">
+        <!-- 和Spring整合后，enviroments环境将废除 -->
+        <environment id="development">
+            <!-- 采用jdbc事务管理 -->
+            <transactionManager type="JDBC"/>
+            <!-- 配置数据库连接信息 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <package name="cn.jmu.dao"/>
+    </mappers>
+</configuration>
+
